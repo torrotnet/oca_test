@@ -1,0 +1,1 @@
+$('.flot-tick-label tickLabel').append('myLabel')

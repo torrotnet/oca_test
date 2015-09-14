@@ -1,0 +1,7 @@
+
+    {% for radio in questions_form.answers %}
+        <input name="{{ radio.name }}" type="radio" id="radio_{{ radio.index }}" value={{ radio.choice_value }}>
+        <label for="radio_{{ radio.index }}">{{ radio.choice_label }}</label>
+    {% endfor %}
+
+

@@ -1,0 +1,21 @@
+        <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li>
+                    <a href="/"><span class="nav-label">Главная</span>  </a>
+                </li>
+                <li>
+                    <a href="/test/"><span class="nav-label">Начать тест</span>  </a>
+                </li>
+                <li>
+                    <a href="/instructions/"><span class="nav-label">Инструкции</span>  </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/results/"><span class="nav-label">Результаты</span></a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+        </nav>

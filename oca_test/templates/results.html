@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2>Результаты</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/">Главная</a>
+                </li>
+                <li>
+                    <a href="/results/">Результаты</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>Имя</td>
+                                <td>E-mail</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td>D</td>
+                                <td>E</td>
+                                <td>F</td>
+                                <td>G</td>
+                                <td>H</td>
+                                <td>I</td>
+                                <td>J</td>
+                            </tr>
+                            {% for result in r %}
+                                <tr>
+                                    <td><a href="/results/{{ result.user.id }}" >{{ result.user.name }}</a></td>
+                                    <td>{{ result.user.email }}</td>
+                                    <td>{{ result.A }}</td>
+                                    <td>{{ result.B }}</td>
+                                    <td>{{ result.C }}</td>
+                                    <td>{{ result.D }}</td>
+                                    <td>{{ result.E }}</td>
+                                    <td>{{ result.F }}</td>
+                                    <td>{{ result.G }}</td>
+                                    <td>{{ result.H }}</td>
+                                    <td>{{ result.I }}</td>
+                                    <td>{{ result.J }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

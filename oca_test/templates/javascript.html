@@ -1,0 +1,133 @@
+{% load staticfiles %}
+<!-- Mainly scripts -->
+    <script src="{%  static 'js/jquery-2.1.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Flot -->
+    <script src="{% static 'js/jquery.flot.js' %}"></script>
+    <script src="{% static 'js/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="{% static 'js/jquery.flot.resize.js' %}"></script>
+{#    <script src="{% static 'js/jquery.flot.pie.js' %}"></script>#}
+{#    <script src="{% static 'js/jquery.flot.time.js' %}"></script>#}
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+{#    <script src="{% static 'js/pace.min.js' %}"></script>#}
+
+    <script>
+    $(function() {
+    var barOptions = {
+        series: {
+            lines: {
+                show: true,
+                lineWidth: 2,
+                fill: true,
+                fillColor: {
+                    colors: [{
+                        opacity: 0.0
+                    }, {
+                        opacity: 0.0
+                    }]
+                }
+            },
+            points: {
+                show: false,
+            }
+        },
+        xaxes: [{
+            position: "bottom",
+            tickDecimals: 0,
+            min: 0.5,
+            max: 10.5,
+            labelWidth: 10,
+            ticks: [[1,'A Рассеянность'],[2,'B Депрессия'],[3,'C Нервозность'],[4,'D Неуверенность'],[5,'E Пассивность'],
+            [6,'F Безволие'],[7,'G Безответственность'],[8,'H Критичность'],[9,'I Неотзывчивость'],
+                [10,'J Необщительность']]
+        }, {
+            position: "top",
+            tickDecimals: 0,
+            labelWidth: 10,
+            min: 0.5,
+            max: 10.5,
+            ticks: [[1,'A Стабильность'],[2,'B Счастье'],[3,'C Самообладание'],[4,'D Уверенность'],[5,'E Активность'],
+            [6,'F Настойчивость'],[7,'G Способность быть причиной'],[8,'H Правильность оценки'],[9,'I Чуткость'],
+                [10,'J Общительность']]
+        }],
+
+        yaxis: {
+            max: 100,
+            min: -100
+        },
+        colors: ["#1ab394"],
+        grid: {
+            color: "#999999",
+            hoverable: true,
+            clickable: true,
+            tickColor: "#D4D4D4",
+            borderWidth:0,
+        },
+        legend: {
+            show: true,
+            position: "se"
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "x: %x, y: %y"
+        }
+    };
+    var barData1 = {
+        lines: {lineWidth: 6},
+        xaxis:2,
+        label: "Результаты теста",
+        data: [
+            [1, {{ r.A }}],
+            [2, {{ r.B }}],
+            [3, {{ r.C }}],
+            [4, {{ r.D }}],
+            [5, {{ r.E }}],
+            [6, {{ r.F }}],
+            [7, {{ r.G }}],
+            [8, {{ r.H }}],
+            [9, {{ r.I }}],
+            [10, {{ r.J }}]
+        ]
+
+    };
+    var barData2 = {
+        color: "rgba(208,224,208,1)",
+        lines:{
+            fillColor: "rgba(20,100,20,0.2)"
+        },
+        label: "Приемлемое состояние",
+        data: [
+            [0.5, 32],
+            [10.5, 32]
+        ]};
+    var barData3 = {
+        color: "rgba(185,161,161,1)",
+        lines:{
+            fillColor: "rgba(80,20,20,0.4)",
+
+        },
+        label: "Желательно обратить внимание",
+        data: [
+            [0.5, -18],
+            [10.5, -18]
+        ]};
+    var barData4 = {
+        color: "rgba(150,150,150,1)",
+        hidelegend: true,
+        lines:{
+            fillColor: "rgba(217,150,177,0.75)",
+
+        },
+        label: "\u0422\u043e\u0447\u043a\u0430 \u043e\u0442\u0441\u0447\u0435\u0442\u0430",
+        data: [
+            [0.5, 7],
+            [10.5, 7]
+        ]};
+    $.plot($("#flot-line-chart"), [barData4, barData2, barData3, barData1], barOptions);
+    })
+    </script>

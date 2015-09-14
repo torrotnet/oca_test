@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <p align="right">Перед началом теста обязательно прочитайте
+        <a href="/instructions/"><strong>инструкцию</strong></a>.
+    </p>
+    <form method="post" action="">{% csrf_token %}
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <h2 align="center">Введите Ваши данные</h2>
+                {{ user_form|crispy }}
+            </div>
+        </div>
+        <h2 align="center">Ответьте на вопросы</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <td align="center">№</td>
+                                    <td align="center">Вопрос</td>
+                                    <td align="center"><strong>+ (Да)</strong></td>
+                                    <td align="center"><strong>? (Не знаю)</strong></td>
+                                    <td align="center"><strong>- (Нет)</strong></td>
+                                </tr>
+                                {% for question in questions_form.question %}
+                                    <tr>
+                                        <td align="center">{{ question.number }}</td>
+                                        <td align="justify">{{ question.text }}</td>
+                                        <td align="center">+</td>
+                                        <td align="center">?</td>
+                                        <td align="center">-</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type="submit" value="Закончить тест">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

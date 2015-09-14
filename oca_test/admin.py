@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ["number", "text", "yes", "no", "do_not_know"]
+    list_display = ["number", "text", "yes", "do_not_know", "no", "character"]
     form = QuestionForm
 
 
