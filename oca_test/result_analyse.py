@@ -17,10 +17,10 @@ def res_analyse(r):
             if r.G >= 90 and r.I >= 90:
                 text.append(["Высокая вероятность, что человек лжет. Весьма вероятно, что он дал ложные ответы в "
                              "своем тесте", S_G90_I90])
-            # if r.B_circle is True:
-            #     text.append(["B обведела в кружок", B_circle])
-            # if r.E_circle is True:
-            #     text.append(["E обведена в кружок", E_circle])
+            if r.B_circle is True:
+                text.append(["B обведена в кружок", B_circle])
+            if r.E_circle is True:
+                text.append(["E обведена в кружок", E_circle])
 
             synd_list = []
             if r.A >= 70 and r.B <= 19:

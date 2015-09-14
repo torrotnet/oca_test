@@ -123,11 +123,37 @@
             fillColor: "rgba(217,150,177,0.75)",
 
         },
-        label: "\u0422\u043e\u0447\u043a\u0430 \u043e\u0442\u0441\u0447\u0435\u0442\u0430",
+        label: "Линия разграничения",
         data: [
             [0.5, 7],
             [10.5, 7]
         ]};
-    $.plot($("#flot-line-chart"), [barData4, barData2, barData3, barData1], barOptions);
+    var barData5 = {
+        color: "rgba(150,150,150,1)",
+        hidelegend: true,
+        points:{
+            show: {% if r.B_circle %}true{% else %}false{% endif %},
+            radius: 7,
+            fillColor: "rgba(117,50,117,0.75)",
+
+        },
+        label: "B в круге",
+        data: [
+            [2, {{ r.B }}]
+        ]};
+    var barData6 = {
+        color: "rgba(150,150,150,1)",
+        hidelegend: true,
+        points:{
+            show: {% if r.E_circle %}true{% else %}false{% endif %},
+            radius: 7,
+            fillColor: "rgba(117,50,117,0.75)",
+
+        },
+        label: "E в кругеЛиния разграничения",
+        data: [
+            [5, {{ r.E }}]
+        ]};
+    $.plot($("#flot-line-chart"), [barData4, barData2, barData3, barData1, barData5, barData6], barOptions);
     })
     </script>

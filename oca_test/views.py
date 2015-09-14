@@ -84,9 +84,12 @@ def test(request):
             j_percent = j_score_to_percent_male_old(j_score)
 
         u1 = User.objects.first()
+        B_circle = True
+        E_circle = False
         r = Results(user=u1, A=a_percent, B=b_percent, C=c_percent, D=d_percent, E=e_percent, F=f_percent,
-                    G=g_percent, H=h_percent, I=i_percent, J=j_percent)
+                    G=g_percent, H=h_percent, I=i_percent, J=j_percent, B_circle=B_circle, E_circle=E_circle)
         r.save()
+
         context = {
             "title": "Success",
             "r": r
