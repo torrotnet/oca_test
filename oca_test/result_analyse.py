@@ -21,6 +21,8 @@ def res_analyse(r):
                 text.append(["B обведена в кружок", B_circle])
             if r.E_circle is True:
                 text.append(["E обведена в кружок", E_circle])
+            if r.not_confident is True:
+                text.append(["Более 50% ответов 'не уверен'.", "Человек не уверен в себе."])
 
             synd_list = []
             if r.A >= 70 and r.B <= 19:

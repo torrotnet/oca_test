@@ -12,7 +12,7 @@ from .choices import *
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["name", "email", "age", "sex"]
+        fields = ["name", "email", "sex"]
 
 
 class QuestionForm(forms.ModelForm):

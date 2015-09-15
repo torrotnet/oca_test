@@ -1,7 +1,9 @@
 # coding=utf-8
+from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from oca_test.forms import UserForm, LoginForm
@@ -43,6 +45,7 @@ def test(request):
         i_score = 0
         j_score = 0
         do_not_know_answer = 0
+
         try:
             for q in questions:
                 if request.POST[str(q.number)] == 'y':
@@ -59,7 +62,7 @@ def test(request):
                                     191, 197]:
                         d_score += q.yes
                     if q.number in [3, 7, 12, 16, 41, 48, 51, 57, 85, 90, 92, 99, 121, 127, 134, 137, 162, 168, 175,
-                                    179]:
+                                     179]:
                         e_score += q.yes
                     if q.number in [23, 29, 31, 38, 65, 66, 72, 79, 103, 107, 114, 120, 145, 147, 154, 159, 185, 187,
                                     195, 199]:
@@ -150,17 +153,19 @@ def test(request):
 
             B_circle, E_circle, not_confident = False, False, False
 
-            # if request.POST['197'] is 'y':
-            #     B_circle = True
-            # if request.POST['22'] is 'y':
-            #     E_circle = True
+            if request.POST['197'] is 'y':
+                B_circle = True
+            if request.POST['22'] is 'y':
+                E_circle = True
             if do_not_know_answer >= 100:
                 not_confident = True
 
             instance = user_form.save(commit=False)
             sex = user_form.cleaned_data.get("sex")
-            age = user_form.cleaned_data.get("age")
+            # age = user_form.cleaned_data.get("age")
+            age = "2"
             email = user_form.cleaned_data.get("email")
+            name = user_form.cleaned_data.get("name")
             instance.save()
 
             a_percent = 200
@@ -209,6 +214,19 @@ def test(request):
                 "title": "Результаты теста отправлены на обработку - мы с Вами свяжемся.",
                 "thank_you": "Спасибо за Ваши ответы, Мы с Вами свяжемся в ближайшее время."
             }
+
+            subject = name+' ('+email+') только что прошел тест'
+            contact_message = 'Результаты '+name+' ('+email+'): A='+str(a_percent)+', B='+str(b_percent)+', C='+\
+                              str(c_percent)+', D='+ str(d_percent)+', E='+str(e_percent)+', F='+str(f_percent)+', G='\
+                              +str(g_percent)+', H='+str(h_percent)+', I='+str(i_percent)+', J='+str(j_percent)+\
+                              '. Для более подробной информации переходите на сайт.'
+            from_email = settings.EMAIL_HOST_USER
+            to_email = settings.EMAIL_HOST_USER
+            send_mail(subject,
+                      contact_message,
+                      from_email,
+                      [to_email],
+                      fail_silently=False)
         except:
             checked = []
             for n in range(1, 201):
@@ -219,7 +237,7 @@ def test(request):
                     pass
             context = {
                 "title": "Результаты не засчитаны - ответьте на все вопросы",
-                "warning": "Вы не ответили на все вопросы. Результыты не засчитаны. Ответьте пожалуйста на все "
+                "warning": "Вы не ответили на все вопросы. Результаты не засчитаны. Ответьте пожалуйста на все "
                            "вопросы.",
                 "user_form": user_form,
                 "questions": questions,
