@@ -23,7 +23,7 @@ def home(request):
 def test(request):
     questions_form = QuestionsForm(request.POST or None)
 
-    title = "Oxford Capacity analysis - Test"
+    title = "Oxford Capacity analysis - Тест"
     user_form = UserForm(request.POST or None)
 
     context = {
@@ -91,14 +91,14 @@ def test(request):
         r.save()
 
         context = {
-            "title": "Success",
+            "title": "Успех",
             "r": r
         }
     return render(request, "oca_test.html", context)
 
 
 def instructions(request):
-    return render(request, "instructions.html", {})
+    return render(request, "instructions.html", {"title": "Инструкции"})
 
 
 @login_required(login_url='/login/')
@@ -138,6 +138,7 @@ def results(request):
     r = Results.objects.all()
 
     context = {
+        "title": "Результаты",
         "r": r,
     }
     return render(request, "results.html", context)
@@ -149,6 +150,7 @@ def result(request, id):
     text = res_analyse(r)
 
     context = {
+        "title": "Результат для "+r.user.name+' ('+r.user.email+')',
         "r": r,
         "text": text,
     }
