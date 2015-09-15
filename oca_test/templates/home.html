@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="/test/">Начать тест</a>
+    <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+    <a href="/test/" class="btn btn-primary btn-block m-b">Начать тест</a>
     <br>
-    <a href="/instructions/">Инструкции</a>
+    <a href="/instructions/" class="btn btn-primary btn-block m-b">Инструкции</a>
     {% if user.is_authenticated %}
         <br>
-        <a href="/results/">Результаты</a>
+        <a href="/results/" class="btn btn-primary btn-block m-b">Результаты</a>
     {% endif %}
+    </div>
+    </div>
 {% endblock %}

@@ -4,6 +4,7 @@
     <p align="right">Перед началом теста обязательно прочитайте
         <a href="/instructions/"><strong>инструкцию</strong></a>.
     </p>
+    {% if not thank_you %}
     <form method="post" action="">{% csrf_token %}
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
@@ -65,4 +66,8 @@
             </div>
         </div>
     </form>
+    {% else %}
+        <h3 align="center"><strong>{{ thank_you }}</strong></h3>
+    {% endif %}
+
 {% endblock %}
