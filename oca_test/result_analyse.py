@@ -65,7 +65,7 @@ def res_analyse(r):
             if r.I >= 70 and r.H <= 19:
                 synd_list.append("I")
                 text.append(["I >= 70, H <= 19", S_I1_H34])
-            if r.A not in synd_list:
+            if 'A' not in synd_list:
                 if r.A >= 70:
                     text.append(["A - 1й диапазон", A1])
                 if 20 <= r.A < 70:
@@ -74,7 +74,7 @@ def res_analyse(r):
                     text.append(["A - 3й диапазон", A3])
                 if r.A < -39:
                     text.append(["A - 4й диапазон", A4])
-            if r.B not in synd_list:
+            if 'B' not in synd_list:
                 if r.B >= 70:
                     text.append(["B - 1й диапазон", B1])
                 if 20 <= r.B < 70:
@@ -83,7 +83,7 @@ def res_analyse(r):
                     text.append(["B - 3й диапазон", B3])
                 if r.B < -39:
                     text.append(["B - 4й диапазон", B4])
-            if r.C not in synd_list:
+            if 'C' not in synd_list:
                 if r.C >= 70:
                     text.append(["C - 1й диапазон", C1])
                 if 20 <= r.C < 70:
@@ -92,7 +92,7 @@ def res_analyse(r):
                     text.append(["C - 3й диапазон", C3])
                 if r.C < -39:
                     text.append(["C - 4й диапазон", C4])
-            if r.D not in synd_list:
+            if 'D' not in synd_list:
                 if r.D >= 70:
                     text.append(["D - 1й диапазон", D1])
                 if 20 <= r.D < 70:
@@ -101,7 +101,7 @@ def res_analyse(r):
                     text.append(["D - 3й диапазон", D3])
                 if r.D < -39:
                     text.append(["D - 4й диапазон", D4])
-            if r.E not in synd_list:
+            if 'E' not in synd_list:
                 if r.E >= 70:
                     text.append(["E - 1й диапазон", E1])
                 if 20 <= r.E < 70:
@@ -110,7 +110,7 @@ def res_analyse(r):
                     text.append(["E - 3й диапазон", E3])
                 if r.E < -39:
                     text.append(["E - 4й диапазон", E4])
-            if r.F not in synd_list:
+            if 'F' not in synd_list:
                 if r.F >= 70:
                     text.append(["F - 1й диапазон", F1])
                 if 20 <= r.F < 70:
@@ -119,7 +119,7 @@ def res_analyse(r):
                     text.append(["F - 3й диапазон", F3])
                 if r.F < -39:
                     text.append(["F - 4й диапазон", F4])
-            if r.G not in synd_list:
+            if 'G' not in synd_list:
                 if r.G >= 70:
                     text.append(["G - 1й диапазон", G1])
                 if 20 <= r.G < 70:
@@ -128,7 +128,7 @@ def res_analyse(r):
                     text.append(["G - 3й диапазон", G3])
                 if r.G < -39:
                     text.append(["G - 4й диапазон", G4])
-            if r.H not in synd_list:
+            if 'H' not in synd_list:
                 if r.H >= 70:
                     text.append(["H - 1й диапазон", H1])
                 if 20 <= r.H < 70:
@@ -137,7 +137,7 @@ def res_analyse(r):
                     text.append(["H - 3й диапазон", H3])
                 if r.H < -39:
                     text.append(["H - 4й диапазон", H4])
-            if r.I not in synd_list:
+            if 'I' not in synd_list:
                 if r.I >= 70:
                     text.append(["I - 1й диапазон", I1])
                 if 20 <= r.I < 70:
@@ -146,7 +146,7 @@ def res_analyse(r):
                     text.append(["I - 3й диапазон", I3])
                 if r.I < -39:
                     text.append(["I - 4й диапазон", I4])
-            if r.J not in synd_list:
+            if 'J' not in synd_list:
                 if r.J >= 70:
                     text.append(["J - 1й диапазон", J1])
                 if 20 <= r.J < 70:

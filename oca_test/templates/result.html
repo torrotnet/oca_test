@@ -50,10 +50,9 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1" >
-                {% for pas in text %}
-                    {% for p in pas %}
-                        <p align="justify">{{ p }}</p>
-                    {% endfor %}
+                {% for h, p in text %}
+                    <h2 align="center"><strong>{{ h }}</strong></h2>
+                    <p align="justify">{{ p }}</p>
                 {% endfor %}
             </div>
         </div>

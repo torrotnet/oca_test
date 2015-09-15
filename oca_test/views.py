@@ -94,7 +94,6 @@ def test(request):
             "title": "Success",
             "r": r
         }
-
     return render(request, "oca_test.html", context)
 
 
