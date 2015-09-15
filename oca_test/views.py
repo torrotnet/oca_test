@@ -147,32 +147,22 @@ def test(request):
                     if q.number in [25, 28, 34, 39, 64, 69, 75, 77, 104, 110, 112, 118, 144, 149, 155, 160, 183, 190,
                                     193, 200]:
                         j_score += q.no
+
             B_circle, E_circle, not_confident = False, False, False
 
-            if request.POST['197'] is 'y':
-                B_circle = True
-            if request.POST['22'] is 'y':
-                E_circle = True
+            # if request.POST['197'] is 'y':
+            #     B_circle = True
+            # if request.POST['22'] is 'y':
+            #     E_circle = True
             if do_not_know_answer >= 100:
                 not_confident = True
-
 
             instance = user_form.save(commit=False)
             sex = user_form.cleaned_data.get("sex")
             age = user_form.cleaned_data.get("age")
+            email = user_form.cleaned_data.get("email")
             instance.save()
 
-            # TODO: check quantity do not know % of all answers. if >50% - person is not confident
-            # a_score = 100
-            # b_score = 100
-            # c_score = 100
-            # d_score = 100
-            # e_score = 100
-            # f_score = 100
-            # g_score = 100
-            # h_score = 100
-            # i_score = 100
-            # j_score = 100
             a_percent = 200
             b_percent = 200
             c_percent = 200
@@ -208,22 +198,33 @@ def test(request):
                 i_percent = i_score_to_percent_male_old(i_score)
                 j_percent = j_score_to_percent_male_old(j_score)
 
-            u1 = User.objects.first()
-            # if request.POST['197'] is 'y':
-            #     B_circle = True
-            # if request.POST['22'] is 'y':
-            #     E_circle = True
+            u1 = User.objects.get(email=email)
+
             r = Results(user=u1, A=a_percent, B=b_percent, C=c_percent, D=d_percent, E=e_percent, F=f_percent,
                         G=g_percent, H=h_percent, I=i_percent, J=j_percent, B_circle=B_circle, E_circle=E_circle,
                         not_confident=not_confident)
             r.save()
 
             context = {
-                "title": "Успех",
-                "request": request,
+                "title": "Результаты теста отправлены на обработку - мы с Вами свяжемся.",
+                # "request": request,
             }
         except:
-            pass
+            checked = []
+            for n in range(1, 201):
+                try:
+                    if str(n) in request.POST:
+                        checked.append([n, request.POST[str(n)]])
+                except:
+                    pass
+            context = {
+                "title": "Результаты не засчитаны - ответьте на все вопросы",
+                "warning": "Вы не ответили на все вопросы. Результыты не засчитаны. Ответьте пожалуйста на все "
+                           "вопросы.",
+                "user_form": user_form,
+                "questions": questions,
+                "checked": checked
+            }
     return render(request, "oca_test.html", context)
 
 

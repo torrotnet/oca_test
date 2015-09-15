@@ -12,6 +12,9 @@
             </div>
         </div>
         <h2 align="center">Ответьте на вопросы</h2>
+        {% if warning %}
+            <h3 align="center"><strong>{{ warning }}</strong></h3>
+        {% endif %}
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox">
@@ -30,17 +33,33 @@
                                     <tr>
                                         <td align="center">{{ question.number }}</td>
                                         <td align="justify">{{ question.text }}</td>
-                                        <td align="center"><input type='radio' value="y" name='{{ question.number }}'></td>
-                                        <td align="center"><input type='radio' value="m" name='{{ question.number }}'></td>
-                                        <td align="center"><input type='radio' value="n" name='{{ question.number }}'></td>
+                                        <td align="center"><input type='radio' value="y" name='{{ question.number }}'
+                                                                  {% for n,v in checked %}
+                                                                      {% if n == question.number and v == 'y' %}
+                                                                          checked
+                                                                      {% endif %}
+                                                                  {% endfor %}>
+                                        </td>
+                                        <td align="center"><input type='radio' value="m" name='{{ question.number }}'
+                                                                  {% for n,v in checked %}
+                                                                      {% if n == question.number and v == 'm' %}
+                                                                          checked
+                                                                      {% endif %}
+                                                                  {% endfor %}>
+                                        </td>
+                                        <td align="center"><input type='radio' value="n" name='{{ question.number }}'
+                                                                  {% for n,v in checked %}
+                                                                      {% if n == question.number and v == 'n' %}
+                                                                          checked
+                                                                      {% endif %}
+                                                                  {% endfor %}>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                         <input type="submit" value="Закончить тест">
-                    {{ request.POST }}
-                    {{ text }}
                     </div>
                 </div>
             </div>
