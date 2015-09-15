@@ -26,19 +26,21 @@
                                     <td align="center"><strong>? (Не знаю)</strong></td>
                                     <td align="center"><strong>- (Нет)</strong></td>
                                 </tr>
-                                {% for question in questions_form.question %}
+                                {% for question in questions %}
                                     <tr>
                                         <td align="center">{{ question.number }}</td>
                                         <td align="justify">{{ question.text }}</td>
-                                        <td align="center">+</td>
-                                        <td align="center">?</td>
-                                        <td align="center">-</td>
+                                        <td align="center"><input type='radio' value="y" name='{{ question.number }}'></td>
+                                        <td align="center"><input type='radio' value="m" name='{{ question.number }}'></td>
+                                        <td align="center"><input type='radio' value="n" name='{{ question.number }}'></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                         <input type="submit" value="Закончить тест">
+                    {{ request.POST }}
+                    {{ text }}
                     </div>
                 </div>
             </div>

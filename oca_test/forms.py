@@ -4,9 +4,9 @@ from django import forms
 from .choices import *
 
 
-class QuestionsForm(forms.Form):
-    question = Question.objects.all
-    answers = forms.ChoiceField(widget=forms.RadioSelect, choices=ANSWERFORM_CHOICES, required=True)
+# class QuestionsForm(forms.Form):
+#     question = Question.objects.all
+#     answers = forms.ChoiceField(widget=forms.RadioSelect, choices=ANSWERFORM_CHOICES, required=True)
 
 
 class UserForm(forms.ModelForm):

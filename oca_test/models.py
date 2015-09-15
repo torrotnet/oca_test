@@ -41,6 +41,7 @@ class Results(models.Model):
     J = models.IntegerField()
     B_circle = models.BooleanField(default=False)
     E_circle = models.BooleanField(default=False)
+    not_confident = models.BooleanField(default=False)
 
     def __str__(self):
         return "Results for %s" % self.user.name
