@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hhu1*nzwe7_1ou=@-!6r$1jcre^ojmj^-i7+hu!xv%udiknxk0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ocatest.herokuapp.com']
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "mybesttestmail@gmail.com"
@@ -112,8 +112,8 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),  'OCA_static_in_env', 'static_root')
-
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),  'OCA_static_in_env', 'static_root')
+STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,  'static_in_pro', 'our_static'),
 )

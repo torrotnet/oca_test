@@ -1,7 +1,6 @@
 env
 /static
 *.pyc
-static_in_pro
 .env
 .Python
 .idea
