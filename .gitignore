@@ -1,8 +1,12 @@
 env
 /static
 *.pyc
+static_in_pro
+.env
 .Python
 .idea
+__pycache__
+.pyc
 
 # Compiled source #
 ###################
