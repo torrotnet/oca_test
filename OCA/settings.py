@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hhu1*nzwe7_1ou=@-!6r$1jcre^ojmj^-i7+hu!xv%udiknxk0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['ocatest.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "mybesttestmail@gmail.com"
