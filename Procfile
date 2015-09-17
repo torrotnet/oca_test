@@ -1,1 +1,1 @@
-web: gunicorn oca.wsgi --log-file -
+web: gunicorn OCA.wsgi --log-file -
