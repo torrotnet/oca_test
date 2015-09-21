@@ -7,7 +7,7 @@ from .choices import *
 
 class User(models.Model):
     name = models.CharField('Имя', max_length=100)
-    email = models.EmailField('Адрес электронной почты', unique=True)
+    email = models.EmailField('Адрес электронной почты', unique=False)
     age = models.CharField('Возраст', max_length=1, choices=USER_AGE_CHOICES, default="2")
     sex = models.CharField('Пол', max_length=1, choices=USER_SEX_CHOICES)
 
@@ -29,7 +29,7 @@ class Question(models.Model):
 
 
 class Results(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.ForeignKey(User)
     A = models.IntegerField()
     B = models.IntegerField()
     C = models.IntegerField()
