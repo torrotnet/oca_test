@@ -1,4 +1,5 @@
 # coding: utf-8
+from datetime import datetime
 
 from django.db import models
 from .choices import *
@@ -11,7 +12,7 @@ class User(models.Model):
     sex = models.CharField('Пол', max_length=1, choices=USER_SEX_CHOICES)
 
     def __str__(self):
-        return "%s" % self.name
+        return "%s (%s)" % (self.name, self.email)
 
 
 class Question(models.Model):
@@ -42,6 +43,7 @@ class Results(models.Model):
     B_circle = models.BooleanField(default=False)
     E_circle = models.BooleanField(default=False)
     not_confident = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return "Results for %s" % self.user.name

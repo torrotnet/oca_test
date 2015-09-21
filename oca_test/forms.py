@@ -25,7 +25,7 @@ class QuestionForm(forms.ModelForm):
 class ResultsForm(forms.ModelForm):
     class Meta:
         model = Results
-        fields = ["user", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+        fields = ["user", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "timestamp"]
 
 
 class LoginForm(forms.Form):

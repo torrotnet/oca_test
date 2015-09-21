@@ -15,7 +15,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class ResultsAdmin(admin.ModelAdmin):
-    list_display = ["user", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+    list_display = ["user", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "timestamp"]
     form = ResultsForm
 
 
