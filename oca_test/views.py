@@ -13,7 +13,7 @@ from oca_test.score_to_percent import *
 
 
 def home(request):
-    title = "Oxford Capacity analysis - Coloris"
+    title = "Test - Coloris"
     r = Results.objects.first()
     context = {
         "title": title,
@@ -23,7 +23,7 @@ def home(request):
 
 
 def test(request):
-    title = "Oxford Capacity analysis - Тест"
+    title = "Test - Coloris"
     user_form = UserForm(request.POST or None)
     questions = Question.objects.all()
 

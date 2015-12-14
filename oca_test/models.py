@@ -6,7 +6,7 @@ from .choices import *
 
 
 class User(models.Model):
-    name = models.CharField('Имя', max_length=100)
+    name = models.CharField('ФИО', max_length=100)
     email = models.EmailField('Адрес электронной почты', unique=False)
     age = models.CharField('Возраст', max_length=1, choices=USER_AGE_CHOICES, default="2")
     sex = models.CharField('Пол', max_length=1, choices=USER_SEX_CHOICES)
